@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp
+  xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+  xsi:type="TaskPaneApp">
+
+  <Id>ED0E6DAA-187B-4F44-AE97-B6DC2733C8C7</Id>
+  <Version>0.1.0.0</Version>
+  <ProviderName>Финансовый агент</ProviderName>
+  <DefaultLocale>ru-RU</DefaultLocale>
+  <DisplayName DefaultValue="Финансовый агент"/>
+  <Description DefaultValue="Проверяет книгу на ошибки учёта и объясняет находки человеческим языком. Считает на вашем компьютере."/>
+  <IconUrl DefaultValue="https://allenwallkerd.github.io/finagent-panel/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://allenwallkerd.github.io/finagent-panel/assets/icon-80.png"/>
+  <SupportUrl DefaultValue="https://allenwallkerd.github.io/finagent-panel/"/>
+
+  <AppDomains>
+    <AppDomain>https://allenwallkerd.github.io/finagent-panel</AppDomain>
+    <AppDomain>https://api.anthropic.com</AppDomain>
+  </AppDomains>
+
+  <Hosts>
+    <Host Name="Workbook"/>
+  </Hosts>
+
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://allenwallkerd.github.io/finagent-panel/taskpane.html"/>
+  </DefaultSettings>
+
+  <Permissions>ReadWriteDocument</Permissions>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Workbook">
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="app.title"/>
+            <Description resid="app.desc"/>
+            <LearnMoreUrl resid="url.support"/>
+          </GetStarted>
+
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <CustomTab id="fa.tab">
+              <Group id="fa.group">
+                <Label resid="group.label"/>
+                <Icon>
+                  <bt:Image size="16" resid="icon.16"/>
+                  <bt:Image size="32" resid="icon.32"/>
+                  <bt:Image size="80" resid="icon.80"/>
+                </Icon>
+                <Control xsi:type="Button" id="fa.open">
+                  <Label resid="button.label"/>
+                  <Supertip>
+                    <Title resid="button.label"/>
+                    <Description resid="button.tip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="icon.16"/>
+                    <bt:Image size="32" resid="icon.32"/>
+                    <bt:Image size="80" resid="icon.80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>fa.taskpane</TaskpaneId>
+                    <SourceLocation resid="url.taskpane"/>
+                  </Action>
+                </Control>
+              </Group>
+              <Label resid="tab.label"/>
+            </CustomTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+
+    <Resources>
+      <bt:Images>
+        <bt:Image id="icon.16" DefaultValue="https://allenwallkerd.github.io/finagent-panel/assets/icon-16.png"/>
+        <bt:Image id="icon.32" DefaultValue="https://allenwallkerd.github.io/finagent-panel/assets/icon-32.png"/>
+        <bt:Image id="icon.80" DefaultValue="https://allenwallkerd.github.io/finagent-panel/assets/icon-80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="url.taskpane" DefaultValue="https://allenwallkerd.github.io/finagent-panel/taskpane.html"/>
+        <bt:Url id="url.support" DefaultValue="https://allenwallkerd.github.io/finagent-panel/"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="app.title" DefaultValue="Финансовый агент"/>
+        <bt:String id="tab.label" DefaultValue="Финансовый агент"/>
+        <bt:String id="group.label" DefaultValue="Проверка"/>
+        <bt:String id="button.label" DefaultValue="Панель агента"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="app.desc" DefaultValue="Откройте панель и нажмите «Проверить книгу»."/>
+        <bt:String id="button.tip" DefaultValue="Открыть панель: находки по книге, разбор и ответы на вопросы по данным."/>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
